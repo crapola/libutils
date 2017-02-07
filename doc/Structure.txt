@@ -1,0 +1,4 @@
+layer: module(dependencies)
+
+1: smalltext(gl,misc)
+0: misc, gl(GLEW), gfx(GLEW,SDL)
