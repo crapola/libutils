@@ -22,15 +22,15 @@ public:
 	Window& operator=(const Window&)=delete;
 	/// \brief Returns the associated SDL_Window pointer.
 	operator SDL_Window* () const;
-    /**
+	/**
 	 * \brief Get the client size.
-     * \return SDL_Point
-     */
+	 * \return SDL_Point
+	 */
 	SDL_Point Size() const;
-    /**
+	/**
 	 * \brief Get the surface.
-     * \return SDL_Surface*
-     */
+	 * \return SDL_Surface*
+	 */
 	SDL_Surface* Surface() const;
 private:
 	SDL_Window* _window;
