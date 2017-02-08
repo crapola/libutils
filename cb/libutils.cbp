@@ -42,6 +42,18 @@
 			<Add option="-O3" />
 			<Add option="-s" />
 		</Linker>
+		<Unit filename="../include/gfx/context.h" />
+		<Unit filename="../include/gfx/window.h" />
+		<Unit filename="../include/gl/buffer.h" />
+		<Unit filename="../include/gl/debug.h" />
+		<Unit filename="../include/gl/logerrors.h" />
+		<Unit filename="../include/gl/program.h" />
+		<Unit filename="../include/gl/shader.h" />
+		<Unit filename="../include/gl/texture.h" />
+		<Unit filename="../include/gl/vao.h" />
+		<Unit filename="../include/misc/backcache.hpp" />
+		<Unit filename="../include/misc/loadstring.h" />
+		<Unit filename="../include/smalltext/smalltext.h" />
 		<Unit filename="../src/gfx/context.cpp" />
 		<Unit filename="../src/gfx/window.cpp" />
 		<Unit filename="../src/gl/buffer.cpp" />
