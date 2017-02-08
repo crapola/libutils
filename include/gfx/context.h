@@ -9,8 +9,8 @@ class Context
 public:
 	Context(SDL_Window*);
 	~Context();
+private:
 	Context(const Context&)=delete;
 	Context& operator=(const Context&)=delete;
-private:
 	SDL_GLContext _context; // void*
 };

@@ -5,7 +5,7 @@
 Window::Window(const char* p_title,int p_width,int p_height,Uint32 p_flags):
 	_window(nullptr)
 {
-	if (SDL_Init(SDL_INIT_VIDEO)<0)
+	if(SDL_Init(SDL_INIT_VIDEO)<0)
 	{
 		std::string s("Unable to init SDL: ");
 		s+=SDL_GetError();
@@ -17,7 +17,7 @@ Window::Window(const char* p_title,int p_width,int p_height,Uint32 p_flags):
 										  p_width,
 										  p_height,
 										  p_flags);
-	if (screen==nullptr)
+	if(screen==nullptr)
 	{
 		std::string s("Unable to create window: ");
 		s+=SDL_GetError();

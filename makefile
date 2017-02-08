@@ -16,7 +16,7 @@ objs=$(addprefix $(objdir)/,$(addsuffix .o,$(notdir $(basename $(src_files)))))
 all: lib/libutils.a
 
 lib/libutils.a: CXXFLAGS+=-O3 -DNDEBUG -s
-lib/libutils.a: $(objs) | lib
+lib/libutils.a: clean $(objs) | lib
 	ar rcs $@ $(objs)
 
 debug: lib/libutils_d.a
