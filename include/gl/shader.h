@@ -12,6 +12,6 @@ public:
 	void Compile(const char* source) const;
 	void Compile(const std::string& source) const;
 private:
-	static constexpr const char* _versionString="#version 420\n";
+	static constexpr const char* _versionString="#version 450\n"; // TODO !
 };
 }
