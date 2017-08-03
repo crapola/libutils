@@ -19,8 +19,7 @@ Shader::~Shader()
 void Shader::Compile(const char* p_source) const
 {
 	std::cout<<"Compiling shader "<<_id<<"\n";
-	std::string s=_versionString+std::string(p_source);
-	const GLchar* ss=s.data();
+	const GLchar* ss=p_source;
 	glShaderSource(_id,1,&ss,nullptr);
 	glCompileShader(_id);
 	// Log error if any
@@ -29,7 +28,7 @@ void Shader::Compile(const char* p_source) const
 	if (result!=GL_TRUE)
 	{
 		std::cerr<<"Shader "<<_id<<" compilation failed.\n";
-		std::cerr<<"Source: \n"<<s<<"\n";
+		std::cerr<<"Source: \n"<<p_source<<"\n";
 		int logLength;
 		glGetShaderiv(_id,GL_INFO_LOG_LENGTH,&logLength);
 		std::vector<char> errorMessageBuf(logLength);
