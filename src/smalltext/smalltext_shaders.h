@@ -2,6 +2,7 @@ constexpr char const* SHADERS_STR[3]={
 // Vertex
 // -----------------------------------------------------------------------------
 R"(
+#version 400
 layout(location=0) in ivec2 chardata;
 
 uniform vec2 resolution;
@@ -62,6 +63,7 @@ void main()
 // Geometry
 // -----------------------------------------------------------------------------
 R"(
+#version 400
 layout(points) in;
 layout(triangle_strip,max_vertices=4) out;
 
@@ -119,6 +121,7 @@ void main()
 // Fragment
 // -----------------------------------------------------------------------------
 R"(
+#version 400
 uniform sampler2D tex;
 
 in vec2 uv;
