@@ -51,13 +51,13 @@ SmallText::SmallText():
 	GLubyte dest[tw*cs]= {0};
 	{
 		// Convert 1bpp to 1Bpp (GL_RED)
-		for(int y=0; y<cs; ++y)
-			for(int x=0; x<FontTexture::symCount; ++x)
+		for (int y=0; y<cs; ++y)
+			for (int x=0; x<FontTexture::symCount; ++x)
 			{
 				GLubyte c=indata[x+y*FontTexture::symCount];
-				for(int b=0; b<cs; ++b)
+				for (int b=0; b<cs; ++b)
 				{
-					if(((c)&(1<<b))!=0)
+					if (((c)&(1<<b))!=0)
 					{
 						constexpr int cs2=cs-1;
 						dest[x*cs+(cs2-y)*tw+cs2-b]=255;
@@ -115,15 +115,16 @@ size_t SmallText::Add(const std::string& p_str)
 	return offset;
 }
 
-void SmallText::Delete(size_t p_from,size_t p_to)
+void SmallText::Delete(size_t p_from,size_t p_len)
 {
-	_chars.erase(_chars.begin()+p_from,_chars.begin()+p_to);
+	size_t to=p_len+p_from;
+	_chars.erase(_chars.begin()+p_from,_chars.begin()+to);
 	UploadWholeBuffer();
 }
 
 void SmallText::Draw()
 {
-	if(_chars.Pending())
+	if (_chars.Pending())
 	{
 		_charBuf.Bind(GL_ARRAY_BUFFER);
 		// Need to add 1 to get count because BackCache's range is a closed
@@ -141,7 +142,7 @@ void SmallText::ForEach(size_t p_from,size_t p_len,
 						std::function<Character(Character)> f)
 {
 	std::for_each(_chars.begin(),_chars.end(),f);
-	for(size_t i=p_from; i<p_from+p_len; ++i)
+	for (size_t i=p_from; i<p_from+p_len; ++i)
 	{
 		_chars[i]=f(_chars.at(i));
 	}
@@ -149,9 +150,10 @@ void SmallText::ForEach(size_t p_from,size_t p_len,
 
 void SmallText::Paragraph(size_t p_o,size_t p_l,int p_x,int p_y,int p_w)
 {
-	if(p_w<=0) p_w=p_l;
+	if (p_w<=0)
+		p_w=p_l;
 
-	for(size_t i=0; i<p_l; ++i)
+	for (size_t i=0; i<p_l; ++i)
 	{
 		Character c
 		{
@@ -167,7 +169,7 @@ void SmallText::Paragraph(size_t p_o,size_t p_l,int p_x,int p_y,int p_w)
 
 void SmallText::SetColor(size_t p_o,size_t p_l,uint8_t p_front,uint8_t p_back)
 {
-	for(size_t i=p_o; i<p_o+p_l; ++i)
+	for (size_t i=p_o; i<p_o+p_l; ++i)
 	{
 		_chars[i].SetColors(p_front,p_back);
 	}
@@ -188,16 +190,16 @@ void SmallText::UploadWholeBuffer()
 				 GL_STATIC_DRAW);
 }
 
-void SmallText::Write(size_t p_o, const string& p_s)
+void SmallText::Write(size_t p_o,const string& p_s)
 {
 	// Return if offset out of bounds
-	if(p_o>=_chars.size())
+	if (p_o>=_chars.size())
 	{
 		return;
 	}
 	// Copy string
 	size_t numChars=min(p_s.size(),_chars.size()-p_o);
-	for(size_t i=0; i<numChars; ++i)
+	for (size_t i=0; i<numChars; ++i)
 	{
 		_chars[i+p_o].c=static_cast<GLubyte>(p_s[i]);
 	}

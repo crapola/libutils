@@ -17,8 +17,8 @@ public:
 	// Add a number of characters to the end and return offset of added chars.
 	size_t Add(size_t count);
 	size_t Add(const std::string& s);
-	// Delete characters in range [from,to[. TODO: use offset and length too -
-	void Delete(size_t from,size_t to);
+	// Delete characters.
+	void Delete(size_t offset,size_t length);
 	// Draw everything.
 	void Draw();
 	// Apply function to range.
