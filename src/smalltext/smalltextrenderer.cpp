@@ -1,8 +1,8 @@
-#include "../../include/smalltext/smalltext.h"
+#include "../../include/smalltext/smalltextrenderer.h"
 #include "cpcfont.h"
 #include "misc/loadstring.h"
-#include "smalltext_shaders.h"
-#include "smalltext_types.h"
+#include "smalltextrenderer_shaders.h"
+#include "smalltextrenderer_types.h"
 #include <algorithm> // for_each
 
 #define USE_EMBEDDED_SHADERS 1
@@ -21,7 +21,7 @@ void VSubData(GLenum p_target,const C& p_container,size_t p_from,size_t p_count)
 				   );
 }
 
-SmallText::SmallText():
+SmallTextRenderer::SmallTextRenderer():
 	_chars(),_charBuf(),_program(),_texture(),_vao()
 {
 	_vao.Bind();
@@ -89,11 +89,11 @@ SmallText::SmallText():
 	_vao.Unbind();
 }
 
-SmallText::~SmallText()
+SmallTextRenderer::~SmallTextRenderer()
 {
 }
 
-size_t SmallText::Add(size_t p_count)
+size_t SmallTextRenderer::Add(size_t p_count)
 {
 	size_t l=_chars.size();
 
@@ -108,7 +108,7 @@ size_t SmallText::Add(size_t p_count)
 	return l;
 }
 
-size_t SmallText::Add(const std::string& p_str)
+size_t SmallTextRenderer::Add(const std::string& p_str)
 {
 	size_t length=p_str.length();
 	size_t offset=Add(length);
@@ -116,14 +116,14 @@ size_t SmallText::Add(const std::string& p_str)
 	return offset;
 }
 
-void SmallText::Delete(size_t p_from,size_t p_len)
+void SmallTextRenderer::Delete(size_t p_from,size_t p_len)
 {
 	size_t to=p_len+p_from;
 	_chars.erase(_chars.begin()+p_from,_chars.begin()+to);
 	UploadWholeBuffer();
 }
 
-void SmallText::Draw()
+void SmallTextRenderer::Draw()
 {
 	if (_chars.Pending())
 	{
@@ -139,7 +139,7 @@ void SmallText::Draw()
 	glDrawArrays(GL_POINTS,0,_chars.size());
 }
 
-void SmallText::ForEach(size_t p_from,size_t p_len,
+void SmallTextRenderer::ForEach(size_t p_from,size_t p_len,
 						std::function<Character(Character)> f)
 {
 	std::for_each(_chars.begin(),_chars.end(),f);
@@ -149,7 +149,7 @@ void SmallText::ForEach(size_t p_from,size_t p_len,
 	}
 }
 
-void SmallText::Paragraph(size_t p_o,size_t p_l,int p_x,int p_y,int p_w)
+void SmallTextRenderer::Paragraph(size_t p_o,size_t p_l,int p_x,int p_y,int p_w)
 {
 	if (p_w<=0)
 		p_w=p_l;
@@ -168,7 +168,7 @@ void SmallText::Paragraph(size_t p_o,size_t p_l,int p_x,int p_y,int p_w)
 	};
 }
 
-void SmallText::SetColor(size_t p_o,size_t p_l,uint8_t p_front,uint8_t p_back)
+void SmallTextRenderer::SetColor(size_t p_o,size_t p_l,uint8_t p_front,uint8_t p_back)
 {
 	for (size_t i=p_o; i<p_o+p_l; ++i)
 	{
@@ -176,14 +176,14 @@ void SmallText::SetColor(size_t p_o,size_t p_l,uint8_t p_front,uint8_t p_back)
 	}
 }
 
-void SmallText::Resolution(int p_w,int p_h) const
+void SmallTextRenderer::Resolution(int p_w,int p_h) const
 {
 	GLint resolution=glGetUniformLocation(_program,"resolution");
 	glUniform2f(resolution,static_cast<float>(p_w),
 				static_cast<float>(p_h));
 }
 
-void SmallText::UploadWholeBuffer()
+void SmallTextRenderer::UploadWholeBuffer()
 {
 	_charBuf.Bind(GL_ARRAY_BUFFER);
 	glBufferData(GL_ARRAY_BUFFER,sizeof(Character)*_chars.size(),
@@ -191,7 +191,7 @@ void SmallText::UploadWholeBuffer()
 				 GL_STATIC_DRAW);
 }
 
-void SmallText::Write(size_t p_o,const string& p_s)
+void SmallTextRenderer::Write(size_t p_o,const string& p_s)
 {
 	// Return if offset out of bounds
 	if (p_o>=_chars.size())
@@ -206,7 +206,7 @@ void SmallText::Write(size_t p_o,const string& p_s)
 	}
 }
 
-void SmallText::Character::SetColors(uint8_t p_front,uint8_t p_back)
+void SmallTextRenderer::Character::SetColors(uint8_t p_front,uint8_t p_back)
 {
 	colors=(p_front<<8)|p_back;
 }

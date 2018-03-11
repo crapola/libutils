@@ -8,12 +8,14 @@
 #include <functional>
 #include <string>
 
-class SmallText
+// TODO: Move to private folder
+
+class SmallTextRenderer
 {
 public:
-#include "../../src/smalltext/smalltext_types.h"
-	SmallText();
-	~SmallText();
+#include "../../src/smalltext/smalltextrenderer_types.h"
+	SmallTextRenderer();
+	~SmallTextRenderer();
 	// Add a number of characters to the end and return offset of added chars.
 	size_t Add(size_t count);
 	size_t Add(const std::string& s);
