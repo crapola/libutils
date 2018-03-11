@@ -10,8 +10,8 @@
 
 class SmallText
 {
-#include "../../src/smalltext/smalltext_types.h"
 public:
+#include "../../src/smalltext/smalltext_types.h"
 	SmallText();
 	~SmallText();
 	// Add a number of characters to the end and return offset of added chars.

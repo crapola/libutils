@@ -217,8 +217,7 @@ public:
 		_range.Add(size()-1,size()-1);
 	}
 
-	// Reversie iterators
-
+	// Reverse iterators
 	const_reverse_iterator rbegin() const
 	{
 		return Base::rbegin();
@@ -229,7 +228,7 @@ public:
 		return Base::rend();
 	}
 
-	// Resize. Fix the range.
+	// Resize and fix the range
 	void resize(size_type ns)
 	{
 		Base::resize(ns);
@@ -284,7 +283,7 @@ private:
 	struct Range
 	{
 	public:
-		// Add elements to current range (boolean union).
+		// Add elements to current range (boolean union)
 		void Add(size_type n)
 		{
 			if (n<_from) _from=n;
@@ -313,7 +312,7 @@ private:
 			_to=0;
 		}
 
-		// Redefine the range, ingoring previous state.
+		// Redefine the range, ingoring previous state
 		void Set(size_type f,size_type t)
 		{
 			_from=f;
@@ -331,7 +330,7 @@ private:
 			return _to;
 		}
 
-		operator bool() const // True if pending, valid range.
+		operator bool() const // True if pending, valid range
 		{
 			return _from<=_to;
 		}

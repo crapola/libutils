@@ -38,6 +38,7 @@ SmallText::SmallText():
 	gs.Compile(LoadString("src/utils/text/src/shaders/geo.glsl"));
 	fs.Compile(LoadString("src/utils/text/src/shaders/frag.glsl"));
 #endif
+#undef USE_EMBEDDED_SHADERS
 	_program.Attach(vs);
 	_program.Attach(gs);
 	_program.Attach(fs);
