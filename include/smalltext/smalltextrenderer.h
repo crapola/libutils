@@ -29,6 +29,8 @@ public:
 	void Paragraph(size_t offset,size_t length,int x_px,int y_px,int width);
 	// Set colors for range of characters.
 	void SetColor(size_t offset,size_t length,uint8_t front,uint8_t back);
+	// Get character at offset.
+	Character Read(size_t offset) const;
 	// Set pixel resolution.
 	void Resolution(int width,int height) const;
 	// Write string at offset.

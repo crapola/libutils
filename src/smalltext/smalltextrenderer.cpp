@@ -140,7 +140,7 @@ void SmallTextRenderer::Draw()
 }
 
 void SmallTextRenderer::ForEach(size_t p_from,size_t p_len,
-						std::function<Character(Character)> f)
+								std::function<Character(Character)> f)
 {
 	std::for_each(_chars.begin(),_chars.end(),f);
 	for (size_t i=p_from; i<p_from+p_len; ++i)
@@ -174,6 +174,11 @@ void SmallTextRenderer::SetColor(size_t p_o,size_t p_l,uint8_t p_front,uint8_t p
 	{
 		_chars[i].SetColors(p_front,p_back);
 	}
+}
+
+SmallTextRenderer::Character SmallTextRenderer::Read(size_t p_o) const
+{
+	return _chars.at(p_o);
 }
 
 void SmallTextRenderer::Resolution(int p_w,int p_h) const

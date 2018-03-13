@@ -1,7 +1,6 @@
 #pragma once
 #include "../../src/gl/glid.hpp"
 #include <string>
-
 namespace gl
 {
 class Shader: public Identifiable
