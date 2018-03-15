@@ -1,9 +1,9 @@
-#include "../../include/smalltext/smalltextrenderer.h"
+#include "smalltextrenderer.h"
+#include <algorithm> // for_each
 #include "cpcfont.h"
 #include "misc/loadstring.h"
 #include "smalltextrenderer_shaders.h"
 #include "smalltextrenderer_types.h"
-#include <algorithm> // for_each
 
 #define USE_EMBEDDED_SHADERS 1
 
