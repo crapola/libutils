@@ -38,5 +38,5 @@ private:
 	gl::Buffer _charBuf;
 	gl::Program _program;
 	gl::Texture _texture;
-	gl::VAO _vao;
+	gl::Vao _vao;
 };

@@ -4,24 +4,24 @@
 namespace gl
 {
 
-VAO::VAO()
+Vao::Vao()
 {
 	glGenVertexArrays(1,&_id);
 	std::cout<<"+VAO id="<<_id<<"\n";
 }
 
-VAO::~VAO()
+Vao::~Vao()
 {
 	glDeleteVertexArrays(1,&_id);
 	std::cout<<"-VAO id="<<_id<<"\n";
 }
 
-void VAO::Bind() const
+void Vao::Bind() const
 {
 	glBindVertexArray(_id);
 }
 
-void VAO::Unbind()
+void Vao::Unbind()
 {
 	glBindVertexArray(0);
 }

@@ -1,5 +1,5 @@
 #pragma once
-#include <SDL2/SDL.h>
+#include <SDL.h>
 /*
 SDL window.
 SDL_Init and SDL_Quit are respectively called on construction and destruction.

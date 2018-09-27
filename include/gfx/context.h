@@ -1,5 +1,5 @@
 #pragma once
-#include <SDL2/SDL.h>
+#include <SDL.h>
 /*
 Create a GLEW context for an SDL Window.
 This is a debug context unless NDEBUG is defined.

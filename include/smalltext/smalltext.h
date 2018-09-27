@@ -6,9 +6,9 @@ Render basic monospace text in OpenGL using an embedded 8x8 font.
 */
 class SmallText
 {
+public:
 	// Opaque handle to string.
 	struct Handle;
-public:
 	// SmallText::Character.
 	typedef SmallTextRenderer::Character Character;
 	SmallText();

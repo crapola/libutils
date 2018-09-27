@@ -2,11 +2,11 @@
 #include "../../src/gl/glid.hpp"
 namespace gl
 {
-class VAO: public Identifiable
+class Vao: public Identifiable
 {
 public:
-	VAO();
-	~VAO();
+	Vao();
+	~Vao();
 	void Bind() const;
 	static void Unbind();
 };

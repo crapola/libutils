@@ -2,7 +2,7 @@
 # 'make debug' to build debug lib
 
 # Include paths
-sdl=F:\Libraries\SDL2-2.0.4\x86_64-w64-mingw32\include
+sdl=F:\Libraries\SDL2\x86_64-w64-mingw32\include\SDL2
 glew=F:\Libraries\GLEW\glew-2.0.0\include
 self=include
 
